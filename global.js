@@ -25,7 +25,7 @@ buttonSubmitter.addEventListener('click', process_answer_submission);
 
 // runs the function clear_all when user clicks the next button
 var buttonNext = document.getElementById('next');
-buttonNext.addEventListener('click', clear_all);
+buttonNext.addEventListener('click', count_to_end);
 
 // returns the string the user entered in the input field with the id of "answer"
 function given_answer() {
@@ -76,13 +76,28 @@ function process_answer_submission(){
   update_question_result(is_correct_answer(user_answer));
 }
 
-var next_submit = function() {
+// variable containing anonymous function
+// calls clear_all
+// advances us to next question
+// if we are at the last question, continue to results()
+// otherwise move to next question
+var count_to_end = function() {
   clear_all();
   i++;
   if (i == questions.length) {
-    final_total();
+    results();
   } else {
     next_question();
+  }
+}
+
+function results() {
+  questionResult.innerText = 
+  "You answered " + score + " of " + questions.length + " questions correctly, good for " + (score/questions.length*100) + "%. You need a 70% to pass.";
+  if (score >= 70) {
+    return totalResult.innerText = "You passed!";
+  } else {
+    return totalResult.innerText = "You failed. You know nothing Jon Snow.";
   }
 }
 
