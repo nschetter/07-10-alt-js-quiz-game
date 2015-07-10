@@ -68,10 +68,12 @@ var update_question_result = function(correct) {
 }
 
 // function that processes multiple functions
-// 
+// first declares user_answer variable, which comes from given_answer()
+// calls the update_question_result function taking is_correct_answer as argument
+// is_correct_answer() takes variable user_answer as an argument 
 function process_answer_submission(){
   var user_answer = given_answer(); 
-  update_question_result(is_correct_answer(userAnswer));
+  update_question_result(is_correct_answer(user_answer));
 }
 
 
