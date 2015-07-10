@@ -23,9 +23,9 @@ var totalResult = document.getElementById("total_result");
 var buttonSubmitter = document.getElementById('submitter');
 buttonSubmitter.addEventListener('click', process_answer_submission);
 
-// runs the function clearAll when user clicks the next button
+// runs the function clear_all when user clicks the next button
 var buttonNext = document.getElementById('next');
-buttonNext.addEventListener('click', clearAll);
+buttonNext.addEventListener('click', clear_all);
 
 // returns the string the user entered in the input field with the id of "answer"
 function given_answer() {
@@ -49,7 +49,7 @@ var is_correct_answer = function(answer_text) {
 }
 
 // function that clears ALL fields including the div of the question
-function clearAll() {
+function clear_all() {
   userAnswer.value = "";
   questions[i].style.display = "none"
   questionResult.innerHTML = "";
@@ -74,6 +74,16 @@ var update_question_result = function(correct) {
 function process_answer_submission(){
   var user_answer = given_answer(); 
   update_question_result(is_correct_answer(user_answer));
+}
+
+var next_submit = function() {
+  clear_all();
+  i++;
+  if (i == questions.length) {
+    final_total();
+  } else {
+    next_question();
+  }
 }
 
 
