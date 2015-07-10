@@ -38,15 +38,41 @@ var next_question = function() {
   questions[i].style.display = "block"
 }
 
+// variable containing anonymous function
+// answer_text comes from process_answer_submission function
+var is_correct_answer = function(answer_text) {
+  if (answer_text === answers[i]) { 
+    return true; 
+  } else {
+    return false;
+  }   
+}
+
 // function that clears ALL fields including the div of the question
 function clearAll() {
   userAnswer.value = "";
-  questions[counter].style.display = "none"
+  questions[i].style.display = "none"
   questionResult.innerHTML = "";
 }
 
+// anonymous function inside a variable
+// correct is taken from process_answer_submission
+// if correct is true, score incremented by one and questionResult div reads "Success!"
+var update_question_result = function(correct) { 
+  if (correct == true) {
+    score++;
+    questionResult.innerHTML = "Success!"  
+  } else {
+    questionResult.innerHTML = "Incorrect!" 
+  }
+}
 
-
+// function that processes multiple functions
+// 
+function process_answer_submission(){
+  var user_answer = given_answer(); 
+  update_question_result(is_correct_answer(userAnswer));
+}
 
 
 
