@@ -8,24 +8,25 @@ var divQuestion4 = document.getElementById('question4');
 var questions = [question1, question2, question3, question4];
 var answers = ["b", "a", "d", "a"];
 
+
+for (var n=0; n < questions.length; n++) {
+  questions[n].style.display = 'none';
+}
+questions[0].style.display = 'block';
+
+
 // variables containing our counter and the score
 var score = 0;
 var i = 0;
 
 // variables handling the submission and interactivity of the app
-var buttonSubmit = document.getElementById("submitter");
 var userAnswer = document.getElementById("answer");
 var questionResult = document.getElementById("question_result"); 
-var nextButton = document.getElementById("next");
 var totalResult = document.getElementById("total_result");
 
 // runs the function process_answer_submission when user clicks submitter button
 var buttonSubmitter = document.getElementById('submitter');
 buttonSubmitter.addEventListener('click', process_answer_submission);
-
-// runs the function clear_all when user clicks the next button
-var buttonNext = document.getElementById('next');
-buttonNext.addEventListener('click', count_to_end);
 
 // returns the string the user entered in the input field with the id of "answer"
 function given_answer() {
@@ -35,6 +36,9 @@ function given_answer() {
 // variable containing anonymous function
 // displays the respective div of each question
 var next_question = function() {
+  for (var n=0; n < questions.length; n++) {
+    questions[n].style.display = 'none';
+  }
   questions[i].style.display = "block"
 }
 
@@ -51,8 +55,14 @@ var is_correct_answer = function(answer_text) {
 // function that clears ALL fields including the div of the question
 function clear_all() {
   userAnswer.value = "";
-  questions[i].style.display = "none"
   questionResult.innerHTML = "";
+  if (i < questions.length) {
+    questions[i].style.display = "none";
+  }
+  if (i == questions.length) {
+    document.getElementById('quiz-wrapper').style.display = 'none';
+    document.getElementById('result-wrapper').style.display = 'block';
+  }
 }
 
 // anonymous function inside a variable
@@ -74,6 +84,8 @@ var update_question_result = function(correct) {
 function process_answer_submission(){
   var user_answer = given_answer(); 
   update_question_result(is_correct_answer(user_answer));
+  i++;
+  count_to_end();
 }
 
 // variable containing anonymous function
@@ -83,7 +95,6 @@ function process_answer_submission(){
 // otherwise move to next question
 var count_to_end = function() {
   clear_all();
-  i++;
   if (i == questions.length) {
     results();
   } else {
@@ -100,10 +111,5 @@ function results() {
     return totalResult.innerText = "You failed. You know nothing Jon Snow.";
   }
 }
-
-
-
-
-
 
 
