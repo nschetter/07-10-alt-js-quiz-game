@@ -37,3 +37,20 @@ function given_answer() {
 var next_question = function() {
   questions[i].style.display = "block"
 }
+
+// function that clears ALL fields including the div of the question
+function clearAll() {
+  userAnswer.value = "";
+  questions[counter].style.display = "none"
+  questionResult.innerHTML = "";
+}
+
+
+
+
+
+
+
+
+
+
