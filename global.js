@@ -8,6 +8,10 @@ var divQuestion4 = document.getElementById('question4');
 var questions = [question1, question2, question3, question4];
 var answers = ["b", "a", "d", "a"];
 
+// variables containing our counter and the score
+var score = 0;
+var i = 0;
+
 // variables handling the submission and interactivity of the app
 var buttonSubmit = document.getElementById("submitter");
 var userAnswer = document.getElementById("answer");
@@ -26,4 +30,10 @@ buttonNext.addEventListener('click', clearAll);
 // returns the string the user entered in the input field with the id of "answer"
 function given_answer() {
   return userAnswer.value;
+}
+
+// variable containing anonymous function
+// displays the respective div of each question
+var next_question = function() {
+  questions[i].style.display = "block"
 }
