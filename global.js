@@ -5,7 +5,7 @@ var divQuestion3 = document.getElementById('question3');
 var divQuestion4 = document.getElementById('question4');
 
 // variables containing an array of the questions AND an array of answers
-var questions = [question1, question2, question3, question4];
+var questions = [divQuestion1, divQuestion2, divQuestion3, divQuestion4];
 var answers = ["b", "a", "d", "a"];
 
 
