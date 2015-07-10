@@ -105,8 +105,8 @@ var count_to_end = function() {
 function results() {
   questionResult.innerText = 
   "You answered " + score + " of " + questions.length + " questions correctly, good for " + (score/questions.length*100) + "%. You need a 70% to pass.";
-  if (score >= 70) {
-    return totalResult.innerText = "You passed!";
+  if (score/questions.length*100 >= 70) {
+    return totalResult.innerText = "You passed! You know when winter is coming.";
   } else {
     return totalResult.innerText = "You failed. You know nothing Jon Snow.";
   }
